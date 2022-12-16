@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% if nofound %}
+    {% block title %} page no found {% endblock %}
+{% else %}
+    {% block title %} assurance pour {{ plan.nom }} {% endblock %}
+{% endif %}
+
+{% block main_block %}
+
+{% if nofound %}
+    <h1>cette page n'existe pas</h1>
+{% else %}
+    nom {{ plan.nom }}
+{% endif %}
+
+
+{% endblock %}

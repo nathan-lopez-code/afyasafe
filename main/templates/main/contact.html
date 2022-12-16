@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %} Nous contacter {% endblock %}
+
+<!-- navigation active link -->
+{% block active_contact %} active {% endblock %}
+
+{% block main_block %}
+    {% if name %}
+    <div class="container mt-5 p-2 bg-primary">
+            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+                <h5 class="d-inline-block text-my text-uppercase border-bottom border-5">merci pour votre message</h5>
+                <p class="text-dark"> cher <strong> {{ name }} </strong> votre message a était reçu avec success, nous vous repondrons très prochainement </p>
+            </div>
+    </div>
+    {% endif %}
+
+    <!-- Contact Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+
+            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+                <h5 class="d-inline-block text-my text-uppercase border-bottom border-5">une question?</h5>
+                <h1 class="display-4">sentez vous libre de nous contacter</h1>
+            </div>
+            <div class="row g-5 mb-5">
+
+                <div class="col-lg-4">
+                    <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center" style="height: 200px;">
+                        <div class="d-flex align-items-center justify-content-center bg-my rounded-circle mb-4" style="width: 100px; height: 70px; transform: rotate(-15deg);">
+                            <i class="fa fa-2x fa-location-arrow text-white" style="transform: rotate(15deg);"></i>
+                        </div>
+                        <h6 class="mb-0">RDC -lubumbashi</h6>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center" style="height: 200px;">
+                        <div class="d-flex align-items-center justify-content-center bg-my rounded-circle mb-4" style="width: 100px; height: 70px; transform: rotate(-15deg);">
+                            <i class="fa fa-2x fa-phone text-white" style="transform: rotate(15deg);"></i>
+                        </div>
+                        <h6 class="mb-0 text-dark"><a href="tel:243976796796">+243 976796796</a></h6>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center" style="height: 200px;">
+                        <div class="d-flex align-items-center justify-content-center bg-my rounded-circle mb-4" style="width: 100px; height: 70px; transform: rotate(-15deg);">
+                            <i class="fa fa-2x bi bi-whatsapp text-white" style="transform: rotate(15deg);"></i>
+                        </div>
+                        <h6 class="mb-0 text-dark"><a href="https://wa.me/243976796796">+243 976796796</a></h6>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center" style="height: 200px;">
+                        <div class="d-flex align-items-center justify-content-center bg-my rounded-circle mb-4" style="width: 100px; height: 70px; transform: rotate(-15deg);">
+                            <i class="fa fa-2x fa-envelope-open text-white" style="transform: rotate(15deg);"></i>
+                        </div>
+                        <h6 class="mb-0">info@example.com</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12" style="height: 500px;">
+                    <div class="position-relative h-100">
+                        <iframe class="position-relative w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125032.68592388848!2d27.432151728841056!3d-11.675165501459066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19723fc0881de66b%3A0x4928a4d9c829599!2sLubumbashi%20Zoo!5e0!3m2!1sen!2scd!4v1671148881463!5m2!1sen!2scd"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center position-relative" style="margin-top: -100px; z-index: 1;">
+                <div class="col-lg-8">
+                    <div class="bg-white rounded p-1 m-5 mb-0">
+                        <form method="post" action="{% url 'main_app:contact' %}">
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-12 col-sm-6">
+                                    <input name="name" type="text" class="form-control bg-light border-0" placeholder="votre nom" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input name="email" type="email" class="form-control bg-light border-0" placeholder="votre mail" style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <input name="sujet" type="text" class="form-control bg-light border-0" placeholder="sujet" style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" class="form-control bg-light border-0" rows="5" placeholder="Message"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">envoyez</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+{% endblock %}

@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Qui nous sommes {% endblock %}
+
+<!-- navigation active link -->
+{% block active_about %} active {% endblock %}
+
+
+{% block main_block %}
+ <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100 rounded" src="{% static 'img/about.jpg' %}" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="mb-4">
+                        <h5 class="d-inline-block text-my text-uppercase border-bottom border-5">Qui nous sommes</h5>
+                    </div>
+                    <h2 class="display-4">Les Origines</h2>
+
+                    <p>C'est en 20XX que la societé AFYA SAFE à commencer suite avec la mission de ... text à ajouter en production</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <div class="container-fluid bg-primary my-5 py-5">
+        <div class="container py-5">
+            <div class="row gx-5">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="mb-4">
+                        <h5 class="d-inline-block text-white text-uppercase border-bottom border-5">Une entreprise une Vison</h5>
+                        <h1 class="display-4">Decouvrez notre vision</h1>
+                    </div>
+                    <p class="text-white mb-5">La gestion de sa santé au bout des doigts, et à portée de main, par téléconsultation ou en physique : AFYA SAFE facilite l’accès à la santé pour tous.</p>
+
+                    <p class="text-white mb-5">Choisissez la couverture adaptée à votre situation (besoins de santé, taille d’entreprise et secteur d’activité) etprofitez des médecines douces ou encore de la méditation.</p>
+
+                    <a class="btn btn-dark rounded-pill py-3 px-5 me-3" href="{% url 'main_app:contact' %}">nous contacter</a>
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-white text-center rounded p-1">
+                        <img class="img-fluid" src="{% static 'img/vison.png' %}" alt="vision">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <div class="container-fluid my-5 py-5">
+        <div class="container py-5">
+            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+                <h5 class="d-inline-block text-my text-uppercase border-bottom border-5">Notre bilan</h5>
+                <h1 class="display-4">AFYA SAFE Ajourd'hui</h1>
+            </div>
+            <div class="row gx-5">
+                    <div class="row g-3 pt-3 mb-5">
+                        <div class="col-sm-3 col-6">
+                            <div class="bg-light text-center rounded-circle py-4">
+                                <i class="fa fa-3x fa-users text-my mb-3"></i>
+                                <h6 class="mb-0">500 personnes<small class="d-block text-my mt-1">nous font confiance</small></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-6">
+                            <div class="bg-light text-center rounded-circle py-4">
+                                <i class="fa fa-3x fa-building text-my mb-3"></i>
+                                <h6 class="mb-0">+ 34 entreprisse<small class="d-block text-my mt-1">nous ont choisi</small></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-6">
+                            <div class="bg-light text-center rounded-circle py-4">
+                                <i class="fa fa-3x fa-smile text-my mb-3"></i>
+                                <h6 class="mb-0">98% de nos clients<small class="d-block text-my mt-1">sont satisfait</small></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-6">
+                            <div class="bg-light text-center rounded-circle py-4">
+                                <i class="fa fa-3x fa-handshake text-my mb-3"></i>
+                                <h6 class="mb-0">+ 13 companies<small class="d-block text-my">partenaire</small></h6>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Team Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+                <h5 class="d-inline-block text-my text-uppercase border-bottom border-5">Notre grande equie</h5>
+                <h1 class="display-4">AFYA SAFE c'est tout une equipe de Professionel</h1>
+            </div>
+            {% if team %}
+            <div class="owl-carousel team-carousel position-relative">
+                {% for t in team %}
+                <div class="team-item">
+                    <div class="row g-0 bg-light rounded overflow-hidden">
+                        <div class="col-12 col-sm-5 h-100">
+                            <img class="img-fluid h-100" src="{% if t.photo %}{{ t.photo.url }}{% else %}{% static 'img/avatar.png' %}{% endif %}" style="object-fit: cover;">
+                        </div>
+                        <div class="col-12 col-sm-7 h-100 d-flex flex-column">
+                            <div class="mt-auto p-4">
+                                <h3>{{ t.nom }}</h3>
+                                <h6 class="fw-normal fst-italic text-primary mb-4">{{ t.post }}</h6>
+                                <p class="m-0">{{ t.description }}</p>
+                            </div>
+                            <div class="d-flex mt-auto border-top p-4">
+                                {% if t.fab %} <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="{{ t.fab }}"><i class="fab fa-facebook"></i></a> {% endif %}
+                                {% if t.wht %} <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="{{ t.wht }}"><i class="fab bi bi-whatsapp"></i></a> {% endif %}
+                                {% if t.twi %} <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="{{ t.twi }}"><i class="fab fa-twitter"></i></a> {% endif %}
+                                {% if t.lin %} <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="{{ t.lin }}"><i class="fab fa-linkedin"></i></a> {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+            {% else %}
+                <h1> site en cours de developpement</h1>
+            {% endif %}
+        </div>
+    </div>
+    <!-- Team End -->
+
+{% endblock %}
